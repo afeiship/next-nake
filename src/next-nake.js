@@ -4,10 +4,18 @@
 
   var NxNake = nx.declare('nx.Nake', {
     statics: {
+      __tasks__: {},
       run: function() {},
-      task: function() {},
-      parallel: function() {},
-      series: function() {}
+      task: function(inPath, inTask) {
+        nx.set(this.__tasks__, inPath, inTask);
+      },
+      parallel: function(inTasks) {
+        var tasks = inTasks.map(function(item) {
+          return this.__tasks__[item];
+        }, this);
+        return Promise.all(tasks);
+      },
+      series: function(inTasks) {}
     }
   });
 
