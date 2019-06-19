@@ -8,7 +8,6 @@
       run: function(inName) {
         var start = Date.now();
         var task = this.__tasks__[inName];
-
         return task().then(
           function(_) {
             var end = Date.now();
