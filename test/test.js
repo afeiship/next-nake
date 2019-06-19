@@ -1,13 +1,12 @@
 (function() {
   var nx = require('next-js-core2');
   var NxNake = require('../src/next-nake');
-  var fsExtra = require('fs-extra');
-  var fs = require('fs');
+  var fs = require('fs-extra');
 
   describe('NxNake.methods', function() {
     test('init', function() {
       NxNake.task('clean', () => {
-        return fsExtra.remove('dist');
+        return fs.remove('dist');
       });
 
       NxNake.task('copy', () => {
